@@ -46,7 +46,7 @@ namespace PokemonApp
         {
             if (formatado == true)
             {
-                Console.WriteLine("Pokémon " + this.Nome + ":  " + this.Descricao.ToLower());
+                Console.WriteLine("Pokemon " + this.Nome + ":  " + this.Descricao.ToLower());
             }
             else
             {
