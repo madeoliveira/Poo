@@ -13,7 +13,11 @@ namespace PokemonApp
             this.Nome = "";
             this.Descricao = "";
         }
-
+        public Pokemon(String nome, String descricao)
+        {
+            this.Nome = nome;
+            this.Descricao = descricao;
+        }
         private String nome;
 
         public String Nome
@@ -38,10 +42,17 @@ namespace PokemonApp
             }
         }
 
-        public void ExibirDadosPokemon()
+        public void ExibirDadosPokemon(Boolean formatado)
         {
-            Console.WriteLine("Nome do Pokémon: " + this.Nome);
-            Console.WriteLine("Descrição do Pokémon: " + this.Descricao);
+            if (formatado == true)
+            {
+                Console.WriteLine("Pokémon " + this.Nome + ":  " + this.Descricao.ToLower());
+            }
+            else
+            {
+                Console.WriteLine("Nome do Pokémon: " + this.Nome);
+                Console.WriteLine("Descrição do Pokémon: " + this.Descricao);
+            }
         }
 
     }
