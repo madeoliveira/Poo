@@ -1,4 +1,6 @@
 ﻿using ConsoleApp.Arquivos;
+using ConsoleApp.Funcoes;
+using ConsoleApp.Tela;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +13,8 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-           // Media.Aluno();
-            Arquivo.Ler(1);
+            Menu.Criar();
+
         }
     }
 }

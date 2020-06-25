@@ -30,10 +30,7 @@ namespace ConsoleApp.Arquivos
             {
                 Ler(numeroArquivo + 1);
             }
-            Console.ReadKey();
         }
-       
-        
        
     }
    
