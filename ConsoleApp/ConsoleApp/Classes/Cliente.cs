@@ -22,7 +22,6 @@ namespace ConsoleApp.Classes
         {
 
         }
-        //public static string Teste;
 
         public string Nome;
         public string Telefone;
@@ -31,23 +30,46 @@ namespace ConsoleApp.Classes
         
     public void Gravar()
         {
-            var clientes = Cliente.LerClientes();
-            clientes.Add(this);
-
-
-
-            if (File.Exists(DiretorioClientes()))
+            if(this.GetType() == typeof(Cliente))
             {
-                StreamWriter r = new StreamWriter(DiretorioClientes());
-               
-                r.WriteLine("nome;telefone;cpf;");
-                foreach (Cliente c in clientes)
+                var clientes = Cliente.LerClientes();
+                clientes.Add(this);
+                if (File.Exists(DiretorioClientes()))
                 {
-                    var linha = c.Nome + ";" + c.Telefone + ";" + c.CPF + ";";
-                    r.WriteLine(linha);
+                     StreamWriter r = new StreamWriter(DiretorioClientes());
+                     r.WriteLine("nome;telefone;cpf;");
+                        foreach (Cliente c in clientes)
+                        {
+                        var linha = c.Nome + ";" + c.Telefone + ";" + c.CPF + ";";
+                        r.WriteLine(linha);
+
+                         }
+                    r.Close();
                 }
-                r.Close();
+                
             }
+            else
+            {
+
+                var usuario = Usuario.LerUsuarios();
+                Usuario u = new Usuario(this.Nome, this.Telefone, this.CPF);
+                usuario.Add(u);
+                if (File.Exists(DiretorioUsuarios()))
+                {
+                    StreamWriter r = new StreamWriter(DiretorioUsuarios());
+                    r.WriteLine("nome;telefone;cpf;");
+                    foreach (Usuario c in usuario)
+                    {
+                        var linha = c.Nome + ";" + c.Telefone + ";" + c.CPF + ";";
+                        r.WriteLine(linha);
+
+                    }
+                    r.Close();
+                }
+
+            }
+
+
         }
 
         public static string DiretorioClientes()
@@ -55,10 +77,17 @@ namespace ConsoleApp.Classes
             return ConfigurationManager.AppSettings["DiretorioDBClientes"];
         }
 
+        public static string DiretorioUsuarios()
+        {
+            return ConfigurationManager.AppSettings["DiretorioDBUsuarios"];
+        }
+
+
+
         public static List<Cliente> LerClientes()
         {
             var clientes = new List<Cliente>();
-            string arquivoClente = DiretorioClientes() + "clientes.txt";
+            string arquivoClente = DiretorioClientes();
             
             if (File.Exists(arquivoClente))
             {
@@ -71,16 +100,11 @@ namespace ConsoleApp.Classes
                     {
                         i++;
                         if (i == 1)
-                            while (i>=1)
+                            while (i==1)
                             {
                                  var clienteArquivo = linha.Split(';');
 
-                            var cliente = new Cliente
-                            {
-                                Nome = clienteArquivo[0],
-                                Telefone = clienteArquivo[1],
-                                CPF = clienteArquivo[2]
-                            };
+                            var cliente = new Cliente (clienteArquivo[0], clienteArquivo[1],clienteArquivo[2]);
                                 clientes.Add(cliente);
                             }
                         
@@ -94,5 +118,27 @@ namespace ConsoleApp.Classes
             return clientes;
         }
        
+        public static List<Usuario> LerUsuarios()
+        {
+            var usuarios = new List<Usuario>();
+            if (File.Exists(DiretorioUsuarios()))
+            {
+                using (StreamReader arquivo = File.OpenText(DiretorioUsuarios()))
+                {
+                    string linha;
+                    int i = 0;
+                    while ((linha = arquivo.ReadLine()) != null)
+                    {
+                        i++;
+                        if (i == 1) continue;
+                        var usuarioArquivo = linha.Split(';');
+                        
+                        var usuario = new Usuario(usuarioArquivo[0], usuarioArquivo[0], usuarioArquivo[0]);
+                        usuarios.Add(usuario);
+                    }
+                }
+            }
+            return usuarios;
+        }
     }
 }

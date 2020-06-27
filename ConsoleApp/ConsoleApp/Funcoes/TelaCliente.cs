@@ -43,10 +43,10 @@ namespace ConsoleApp.Funcoes
                     cliente.Gravar();
 
                 }
-                else if(valor == 2)
+                else 
                 {
-                    var clientes = Cliente.LerClientes();
-                    foreach (Cliente c in clientes)
+                    
+                    foreach (Cliente c in Cliente.LerClientes())
                     {
                         Console.WriteLine(c.Nome);
                         Console.WriteLine(c.Telefone);
