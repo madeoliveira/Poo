@@ -13,7 +13,7 @@ namespace ConsoleApp.Classes
     {
         public Cliente(string nome, string telefone, string cpf)
         {
-           this.Nome = nome;
+            this.Nome = nome;
             this.Telefone = telefone;
             this.CPF = cpf;
         }
@@ -22,7 +22,7 @@ namespace ConsoleApp.Classes
         {
 
         }
-        public static string Teste;
+        //public static string Teste;
 
         public string Nome;
         public string Telefone;
@@ -33,9 +33,12 @@ namespace ConsoleApp.Classes
         {
             var clientes = Cliente.LerClientes();
             clientes.Add(this);
-            if (File.Exists(caminhoBaseClientes()))
+
+
+
+            if (File.Exists(DiretorioClientes()))
             {
-                StreamWriter r = new StreamWriter(caminhoBaseClientes());
+                StreamWriter r = new StreamWriter(DiretorioClientes());
                
                 r.WriteLine("nome;telefone;cpf;");
                 foreach (Cliente c in clientes)
@@ -47,32 +50,43 @@ namespace ConsoleApp.Classes
             }
         }
 
-        public static string caminhoBaseClientes()
+        public static string DiretorioClientes()
         {
-            return ConfigurationManager.AppSettings["baseDosClientes"];
+            return ConfigurationManager.AppSettings["DiretorioDBClientes"];
         }
+
         public static List<Cliente> LerClientes()
         {
             var clientes = new List<Cliente>();
-
-            if (File.Exists(caminhoBaseClientes()))
+            string arquivoClente = DiretorioClientes() + "clientes.txt";
+            
+            if (File.Exists(arquivoClente))
             {
-                using (StreamReader arquivo = File.OpenText(caminhoBaseClientes()))
+               
+                using (StreamReader arquivo = File.OpenText(arquivoClente))
                 {
                     string linha;
                     int i = 0;
                     while ((linha = arquivo.ReadLine()) != null)
                     {
                         i++;
-                        if (i == 1) continue;
-                        var clienteArquivo = linha.Split(';');
+                        if (i == 1)
+                            while (i>=1)
+                            {
+                                 var clienteArquivo = linha.Split(';');
 
-                        var cliente = new Cliente {
-                            Nome = clienteArquivo[0], 
-                            Telefone = clienteArquivo[1], 
-                            CPF = clienteArquivo[2]
-                        };
-                        clientes.Add(cliente);
+                            var cliente = new Cliente
+                            {
+                                Nome = clienteArquivo[0],
+                                Telefone = clienteArquivo[1],
+                                CPF = clienteArquivo[2]
+                            };
+                                clientes.Add(cliente);
+                            }
+                        
+                           
+                        
+                       
                     }
 
                 }

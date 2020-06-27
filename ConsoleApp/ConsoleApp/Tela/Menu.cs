@@ -15,6 +15,7 @@ namespace ConsoleApp.Tela
         public const int LER_ARQUIVOS = 1;
         public const int TABUADA = 2;
         public const int CALCULO_MEDIA = 3;
+        public const int CADASTRAR_CLIENTES = 4;
 
         public static void Criar()
         {
@@ -23,10 +24,11 @@ namespace ConsoleApp.Tela
                 string mensagem = "\n\nOlá, bem vindo ao programa\n" +
                     "\n" +
                     "\n  Digite uma das opções: " +
-                    "\n    0 - Sair do progrma" +
+                    "\n    0 - Sair do programa" +
                     "\n    1 - Para ler arquivo" +
                     "\n    2 - Para executar a Tabuada" +
-                    "\n    3 - Calcular média";
+                    "\n    3 - Calcular média"+
+                    "\n    4 - Cadastrar Cliente";
                 Console.WriteLine(mensagem);
 
                 int valor = int.Parse(Console.ReadLine());
@@ -53,7 +55,12 @@ namespace ConsoleApp.Tela
                     Media.Aluno();
                     Console.WriteLine("\n+++++++++++++++++++++++++++++++++++++++++++++++++++");
                 }
-            
+                else if (valor == CADASTRAR_CLIENTES)
+                {
+                    TelaCliente.Chamar();
+                    Console.WriteLine("\n+++++++++++++++++++++++++++++++++++++++++++++++++++");
+                }
+
             }
         }
     }

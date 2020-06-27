@@ -10,14 +10,14 @@ namespace ConsoleApp.Arquivos
 {
     class Arquivo
     {
-        public static string caminhoArquivo()
+        public static string DiretorioArquivo()
         {
-            return ConfigurationManager.AppSettings["caminhoArquivo"];
+            return ConfigurationManager.AppSettings["DiretorioArquivos"];
         }
         public static void Ler(int numeroArquivo)
         {
-            string arquivoComCaminho = caminhoArquivo() +"arq" + numeroArquivo + ".txt";
-            Console.WriteLine("============ Lendo arquivo ===========\n" + arquivoComCaminho+ "\n======================" );
+            string arquivoComCaminho = DiretorioArquivo() +"arq" + numeroArquivo + ".txt";
+            Console.WriteLine("============ Lendo arquivo ===========\n" +arquivoComCaminho+ "\n======================" );
                 if (File.Exists(arquivoComCaminho))
                 {
                 using(StreamReader arquivo = File.OpenText(arquivoComCaminho))
@@ -30,7 +30,7 @@ namespace ConsoleApp.Arquivos
 
                  }
             }
-            string arquivoComCaminho2 = caminhoArquivo() + "arq" + (numeroArquivo + 1) + ".txt";
+            string arquivoComCaminho2 = DiretorioArquivo() + "arq" + (numeroArquivo + 1) + ".txt";
             if (File.Exists(arquivoComCaminho2))
             {
                 Ler(numeroArquivo + 1);
