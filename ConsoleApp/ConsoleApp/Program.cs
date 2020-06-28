@@ -1,4 +1,5 @@
-﻿using ConsoleApp.Arquivos;
+﻿using Componentes;
+using ConsoleApp.Arquivos;
 using ConsoleApp.Classes;
 using ConsoleApp.Funcoes;
 using ConsoleApp.Tela;
@@ -14,6 +15,9 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
+
+            Ferramentas f = new Ferramentas();
+           bool c = f.ValidarCPF("100,122.586-56");
             // Menu.Criar();
 
             //Console.WriteLine("===================== Usuarios =========");
