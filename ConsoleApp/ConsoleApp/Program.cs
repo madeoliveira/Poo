@@ -1,5 +1,4 @@
 ﻿using ConsoleApp.Classes;
-using System;
 
 namespace ConsoleApp
 {
@@ -7,6 +6,12 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
+            Email.Instancia.Corpo = "Olá, teste de email com classe SINGLETON";
+            Email.Instancia.Titulo = "Classe SINGLETON";
+            Email.Instancia.Origem = "email@email.com.br";
+            Email.Instancia.Destino = "email@email.com";
+
+            Email.Instancia.EnviarEmail();
 
            //// Ferramentas f = new Ferramentas();
            ////bool c = f.ValidarCPF("100,122.586-56");

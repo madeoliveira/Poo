@@ -2,15 +2,10 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleApp.Classes
 {
-    public class Base : IPessoa
+    public abstract class Base : IPessoa
     {
         public Base()
         {
