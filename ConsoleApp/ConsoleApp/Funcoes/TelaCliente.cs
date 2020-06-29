@@ -45,8 +45,8 @@ namespace ConsoleApp.Funcoes
                 }
                 else 
                 {
-                    
-                    foreach (Cliente c in Cliente.LerClientes())
+                    var clientes = new Cliente().Ler();
+                    foreach (Cliente c in clientes)
                     {
                         Console.WriteLine(c.Nome);
                         Console.WriteLine(c.Telefone);

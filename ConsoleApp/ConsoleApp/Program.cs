@@ -16,24 +16,24 @@ namespace ConsoleApp
         static void Main(string[] args)
         {
 
-            Ferramentas f = new Ferramentas();
-           bool c = f.ValidarCPF("100,122.586-56");
-            // Menu.Criar();
+           // Ferramentas f = new Ferramentas();
+           //bool c = f.ValidarCPF("100,122.586-56");
+           // // Menu.Criar();
 
-            //Console.WriteLine("===================== Usuarios =========");
-            //Usuario u = new Usuario();
-            //u.Nome = "Sirlei Franco";
-            //u.Telefone = "44444444";
-            //u.CPF = "777777777777";
-            //u.Gravar();
+            Console.WriteLine("===================== Usuarios =========");
+            Cliente u = new Cliente();
+            u.Nome = "Sirlei Franco";
+            u.Telefone = "44444444";
+            u.CPF = "777777777777";
+            u.Gravar();
 
-            //foreach (Usuario us in Usuario.LerUsuarios())
-            //{
-            //    Console.WriteLine(us.Nome);
-            //    Console.WriteLine(us.Telefone);
-            //    Console.WriteLine(us.CPF);
-            //    Console.WriteLine("==============================");
-            //}
+            foreach (Cliente us in new Cliente().Ler())
+            {
+                Console.WriteLine(us.Nome);
+                Console.WriteLine(us.Telefone);
+                Console.WriteLine(us.CPF);
+                Console.WriteLine("==============================");
+            }
 
             //Console.WriteLine("============= Clientes =================");
             //Cliente ce = new Cliente();
