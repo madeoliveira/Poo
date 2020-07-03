@@ -12,36 +12,36 @@ namespace PokemonApp
         {
             this.InicializaLista();
         }
-        private List<Pokemon> pokemons;
+        private List<PokemonPlus> pokemons;
 
-        public List<Pokemon> Pokemons 
+        public List<PokemonPlus> Pokemons
         {
             get { return pokemons; }
         }
         private void InicializaLista()
         {
-            this.pokemons = new List<Pokemon>();
-            Pokemon p = new Pokemon("Bulbasouro","Sua descrição");
+            this.pokemons = new List<PokemonPlus>();
+            PokemonPlus p = new PokemonPlus("Bulbasouro","Sua descrição",100);
             this.pokemons.Add(p);
-            p = new Pokemon("Mew", "Lendario psiquico");
+            p = new PokemonPlus("Mew", "Lendario psiquico",90);
             this.pokemons.Add(p);
-            p = new Pokemon("Mewtwo", "Lendario psiquico");
+            p = new PokemonPlus("Mewtwo", "Lendario psiquico",95);
             this.pokemons.Add(p);
-            p = new Pokemon("Giratina", "Lendario Fantasma");
+            p = new PokemonPlus("Giratina", "Lendario Fantasma",23);
             this.pokemons.Add(p);
-            p = new Pokemon("Fleygon", "Pokemon dragão");
+            p = new PokemonPlus("Fleygon", "Pokémon dragão",100);
             this.pokemons.Add(p);
-            p = new Pokemon("Metagross", "Pokemon de metal");
+            p = new PokemonPlus("Metagross", "Pokémon de metal",70);
             this.pokemons.Add(p);
-            p = new Pokemon("Muk", "Pokemon de metal");
+            p = new PokemonPlus("Muk", "Pokémon de metal",55);
             this.pokemons.Add(p);
-            p = new Pokemon("Lucario", "Lutador lendario");
+            p = new PokemonPlus("Lucario", "Lutador lendario",98);
             this.pokemons.Add(p);
-            p = new Pokemon("Mudkip", "Pokemon agua");
+            p = new PokemonPlus("Mudkip", "Pokémon água",89);
             this.pokemons.Add(p);
-            p = new Pokemon("Paras", "Pokemon inseto");
+            p = new PokemonPlus("Paras", "Pokémon inseto",88);
             this.pokemons.Add(p);
-            p = new Pokemon("Kyogre", "Lendario da agua");
+            p = new PokemonPlus("Kyogre", "Lendario da água",23);
             this.pokemons.Add(p);
 
 
