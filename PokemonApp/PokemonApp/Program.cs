@@ -18,7 +18,28 @@ namespace PokemonApp
                 resp = Menu();
                 if(resp == 1)
                 {
-                    pokedex.ListarPokemon();
+                    pokedex.ListarPokemons();
+                }
+                if (resp == 2)
+                {
+                    pokedex.ListarPokemons();
+                    Console.WriteLine("Digite o código Pokémon");
+                    int codigo = Convert.ToInt32(Console.ReadLine());
+                    PokemonPlus pPlayer = pokedex.Pokemons[codigo];
+                    Random r = new Random();
+                    codigo = r.Next(0, pokedex.Pokemons.Count);
+                    PokemonPlus pPC = pokedex.Pokemons[codigo];
+
+
+                    if (pPlayer.Poder >= pPC.Poder)
+                    {
+                        Console.WriteLine("Parabéns!!! Você ganhou ");
+                        
+                    }
+                    else
+                    {
+                        Console.WriteLine("Que pena!!! Você perdeu");
+                    }
                 }
                 Console.ReadKey();
                 Console.Clear();
@@ -27,9 +48,10 @@ namespace PokemonApp
         }
         static int Menu()
         {
-            Console.WriteLine("Pokedex");
-            Console.WriteLine("  0  - Sair da Pokedex");
-            Console.WriteLine("  1 - Listar todos os Pokemon");
+            Console.WriteLine("Pokémon - Jogo de batalha ");
+            Console.WriteLine("  0 - Sair da Pokédex");
+            Console.WriteLine("  1 - Listar todos os Pokémon da Pokédex");
+            Console.WriteLine("  2 - Batalhar");
             Console.Write("O que deseja fazer: ");
             int resp = Convert.ToInt32(Console.ReadLine());
             return resp;

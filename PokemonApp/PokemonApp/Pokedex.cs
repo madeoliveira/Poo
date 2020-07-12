@@ -47,10 +47,11 @@ namespace PokemonApp
 
 
         }
-        public void ListarPokemon()
+        public void ListarPokemons()
         {
             for (int i = 0; i < this.Pokemons.Count; i++)
             {
+                Console.WriteLine("Código do Pokémon: " + i);
                 this.Pokemons[i].ExibirDadosPokemon(true);          
             }
                 

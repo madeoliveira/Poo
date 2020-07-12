@@ -14,7 +14,7 @@ namespace PokemonApp
         }
         public PokemonPlus(String nome, String descriao, int poder) : base(nome,descriao)
         {
-            this.Poder = 0;
+            this.Poder = poder;
         }
         public int Poder { get; set; }
         
