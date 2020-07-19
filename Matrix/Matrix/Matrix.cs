@@ -129,6 +129,76 @@ namespace Matrix
             }
         }
 
+        private void Desenhar()
+        {
+            Random r = new Random();
+            for (int i=0; i < _height; i++)
+            {
+                for(int k =0; k < +_width; k++)
+                {
+                    if (_campo[i, k]== 1)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                    }
+                    else if (_campo[i, k] == 2)
+                        {
+                        Console.ForegroundColor = ConsoleColor.White;
+                        }
+                    if (_campo[i, k] != 0)
+                    {
+                        if(i-1>=0 && _campo[i - 1, k] == 0)
+                        {
+                            Console.SetCursorPosition(0, 0);
+                            Console.Write(' ');
+                            Console.MoveBufferArea(0, 0, 1, 1, k, i - 1);
+                        }
+                        Console.SetCursorPosition(0, 0);
+                        Console.Write((char)r.Next(33, 255));
+                        Console.MoveBufferArea(0, 0, 1, 1, k, i);
+                    }
+                    
+                }
+            }
+        }
+        private void Desenhar2()
+        {
+            Random r = new Random();
+            for(int i = 0; i < _height; i++)
+            {
+                for (int k =0; k < _width; k++)
+                {
+                    if (_campo[i, k] == 1)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                    }else if (_campo[i, k] ==2)
+                    {
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    if (_campo[i, k] != 0)
+                    {
+                        Console.SetCursorPosition(k, i);
+                        Console.Write((char)r.Next(33, 255));
+                    }
+                }
+            }
+        }
+        public void Loop()
+        {
+            int i = 0;
+            Inicializar2();
+            Desenhar2();
+            while (!_quit)
+            {
+                if (i>= SPAWN_DELAY)
+                {
+                    Inicializar2();
+                    Desenhar2();
+                    i = 0;
+                }
+                Descer3();
+                i++;
+            }
+        }
 
     }
 }
